@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+
+    <script src="jquery-3.1.1.js"></script>
+
+    <title>Welcome Page</title>
+  </head>
+  <body>
+    <form class="pure-form" action="/books" method="post" style="margin:0 40px">
+      <h1>Welcome to my CRUD app</h1>
+      <select name="select">
+        <option value="get" selected>Get</option>
+        <option value="post">Post</option>
+        <option value="put">Patch</option>
+        <option value="delete">Delete</option>
+      </select>
+      <input type="text" name="name" value="" placeholder="http://localhost:3000/books">
+      <button type="submit" name="button" class="pure-button pure-button-primary">Send</button>
+      <br><br>
+      <textarea name="name" rows="8" cols="40" placeholder='{"name": "bible", "year":"0"}'></textarea>
+    </form>
+  </body>
+</html>
+
+
+
+<!-- Running the code below in console(In inspect element) let view the objects created in url: http://localhost:3000/books, and view every books object created -->
+<!-- CAREFULL while assigning url and method i.e. get, post, patch, etc -->
+<!-- $.ajax({
+url:"http://localhost:3000/books",
+method: 'get'
+}).done(function(data){
+console.log(data);
+}); -->
+
+<!-- $.ajax({
+url:"http://localhost:3000/books",
+method: 'post',
+contentType: 'application/json',
+data: '{"name":"dude"}'
+}).done(function(data){
+console.log(data);
+}); -->
