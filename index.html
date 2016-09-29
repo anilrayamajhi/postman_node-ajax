@@ -23,7 +23,25 @@
       <textarea name="name" rows="8" cols="40" placeholder='{"name": "bible", "year":"0"}'></textarea>
     </form>
     <script type="text/javascript">
-      
+      var theForm = $('form');
+      theForm.on('submit', function(evt){
+        evt.preventDefault();
+        var targetUrl = $("input").val()
+        var targetVerb = $("select").val()
+        var targetData = $("textarea").val()
+
+
+        // if(req.url = 'http://localhost:3000')
+        $.ajax({
+        url:targetUrl,
+        method: targetVerb,
+        contentType: 'application/json',
+        data: targetData
+        }).done(function(data){
+        theForm.append(targetUrl)
+        theForm.append(targetVerb)
+        });
+      });
     </script>
   </body>
 </html>
