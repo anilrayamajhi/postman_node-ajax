@@ -21,11 +21,15 @@
       <button type="submit" name="button" class="pure-button pure-button-primary">Send</button>
       <br><br>
       <textarea name="name" rows="8" cols="40" placeholder='{"name": "bible", "year":"0"}'></textarea>
+      <br /><br>
+      <button type="reset" name="button" class="ganey pure-button" style="background: rgb(202, 60, 60);">Reset</button>
+
+      <ul style="text-align:center;list-style:none;"></ul><br />
     </form>
 
-    <ul style="text-align:center;"></ul>
 
     <script type="text/javascript">
+
       var theForm = $('form');
       theForm.on('submit', function(evt){
         evt.preventDefault();
@@ -45,9 +49,13 @@
           ID: ${el._id}<br />
           name: ${el.name}<br /> year: ${el.year}
           <br /><br /></li>`)}))
-          location.reload();
           // $('body').append(JSON.stringify(data))
         });
+      });
+
+
+      $('.ganey').on('click', function(){
+        location.reload();
       });
     </script>
   </body>
