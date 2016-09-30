@@ -62,7 +62,7 @@ app.patch('/books/:id', function(req, res) {
 app.delete('/books/:id', function(req, res) {
     //delete a fruit
     Book.findByIdAndRemove(req.params.id, function(err) {
-      res.send({message: "Deleted!!"});
+      res.send("Book is Deleted!!");
     });
   });
 

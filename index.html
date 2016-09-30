@@ -23,7 +23,7 @@
       <textarea name="name" rows="8" cols="40" placeholder='{"name": "bible", "year":"0"}'></textarea>
     </form>
 
-    <ul></ul>
+    <ul style="text-align:center;"></ul>
 
     <script type="text/javascript">
       var theForm = $('form');
@@ -40,11 +40,12 @@
         contentType: 'application/json',
         data: targetData
         }).done(function(data){
-        (targetVerb == 'delete') ? $('body').append(JSON.stringify(data)) :
+        (targetVerb == 'delete') ? $('body').append(`<h3 style="text-align:center;">${data}</h3>`) :
         (data.forEach(function(el) {return $('ul').append(`<li>
           ID: ${el._id}<br />
           name: ${el.name}<br /> year: ${el.year}
           <br /><br /></li>`)}))
+          location.reload();
           // $('body').append(JSON.stringify(data))
         });
       });
