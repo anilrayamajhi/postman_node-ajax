@@ -44,16 +44,27 @@ app.get('/books', function(req, res) {
   });
 });
 
-app.get('/create-book-test', function(req, res) {
-  Book.create({name: 'le petit prince', year: 1953}, function(err, book){
-    res.send("Successfully created");
-  });
-});
-
 app.post('/books', function(req, res) {
   console.log(req.body);
-  res.json({message: "you tried to post the books"});
+ Book.create(req.body, function(err, book) {
+   res.json([book]);
+ });
 });
+
+
+app.patch('/books/:id', function(req, res) {
+    //edit(existing fruit)
+    Book.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, book) {
+      res.json([book]);
+    });
+});
+
+app.delete('/books/:id', function(req, res) {
+    //delete a fruit
+    Book.findByIdAndRemove(req.params.id, function(err) {
+      res.send({message: "Deleted!!"});
+    });
+  });
 
 app.listen(3000, function(){
   console.log("Server 3000");

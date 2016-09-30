@@ -14,7 +14,7 @@
       <select name="select">
         <option value="get" selected>Get</option>
         <option value="post">Post</option>
-        <option value="put">Patch</option>
+        <option value="patch">Patch</option>
         <option value="delete">Delete</option>
       </select>
       <input type="text" name="name" value="" placeholder="http://localhost:3000/books">
@@ -22,6 +22,9 @@
       <br><br>
       <textarea name="name" rows="8" cols="40" placeholder='{"name": "bible", "year":"0"}'></textarea>
     </form>
+
+    <ul></ul>
+
     <script type="text/javascript">
       var theForm = $('form');
       theForm.on('submit', function(evt){
@@ -31,15 +34,18 @@
         var targetData = $("textarea").val()
 
 
-        // if(req.url = 'http://localhost:3000')
         $.ajax({
         url:targetUrl,
         method: targetVerb,
         contentType: 'application/json',
         data: targetData
         }).done(function(data){
-        theForm.append(targetUrl)
-        theForm.append(targetVerb)
+        (targetVerb == 'delete') ? $('body').append(JSON.stringify(data)) :
+        (data.forEach(function(el) {return $('ul').append(`<li>
+          ID: ${el._id}<br />
+          name: ${el.name}<br /> year: ${el.year}
+          <br /><br /></li>`)}))
+          // $('body').append(JSON.stringify(data))
         });
       });
     </script>
